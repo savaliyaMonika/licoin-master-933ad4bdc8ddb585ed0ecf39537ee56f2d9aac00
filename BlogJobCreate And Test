@@ -1,0 +1,26 @@
+
+# 1 Simplest way to create and Test Job in Laravel
+
+php artisan queue:table
+php artisan migrate
+
+change QUEUE_DRIVER=database
+
+php artisan make:job LangTrasnlate
+
+public function handle()
+{
+    for($i=0; $i < 10; $i++) {
+        sleep(1);
+        \Log::info($i);
+    }
+}
+
+# user tinker to generate job
+
+dispatch(new App\Jobs\LangTrasnlate())
+
+# In other terminal run
+ php artisan queue:work
+
+# Whare to create Helper Method in Laravel
